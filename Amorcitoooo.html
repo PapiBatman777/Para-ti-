@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi San Valentín?</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffcccb;
+            padding-top: 50px;
+            color: black;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            display: inline-block;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .yes {
+            background-color: #ff4d94;
+            color: white;
+        }
+        .no {
+            background-color: #999;
+            color: white;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¿Ximena del Carmen quiere usted ser Mi San Valentín? 💖</h1>
+        <div class="buttons">
+            <button class="yes" onclick="yesClicked()">Sí</button>
+            <button class="no" id="noButton" onclick="noClicked()">No</button>
+        </div>
+        <p id="message" style="font-size: 18px; margin-top: 20px;"></p>
+    </div>
+
+    <script>
+        let noClickCount = 0;
+        function yesClicked() {
+            document.getElementById('message').innerText = "¡Sabía que dirías que sí! 🥰💖 Te amooo mucho mucho";
+            document.querySelector('.buttons').style.display = 'none';
+        }
+
+        function noClicked() {
+            let noButton = document.getElementById('noButton');
+            let messages = [
+                "¿Estás segura? 😢",
+                "Piensa bien tu respuesta 🥺",
+                "No me hagas esto 😭",
+                "Dale otra oportunidad 😣",
+                "Piensa en los niños 😢",
+                "Por Ponchito y Manolito di que sí 🥺"
+            ];
+            
+            if (noClickCount < messages.length) {
+                document.getElementById('message').innerText = messages[noClickCount];
+                noClickCount++;
+            } else {
+                let x = Math.random() * window.innerWidth * 0.8;
+                let y = Math.random() * window.innerHeight * 0.8;
+                noButton.style.left = `${x}px`;
+                noButton.style.top = `${y}px`;
+            }
+        }
+    </script>
+</body>
+</html>
